@@ -4,8 +4,8 @@
       平均值: {{average}}
     </div>
     <div class="list" v-for="item in dataList" :key="item.id">
-      <div class="list-item">id:{{item.id}}, data:{{item.data}}</div>
-      <div class="odd">{{item.time}}</div>
+      <div>id:{{item.id}}, data:{{item.data}}</div>
+      <div>{{item.time}}</div>
     </div>
     <button @click="update">加载更多</button>
   </div>
