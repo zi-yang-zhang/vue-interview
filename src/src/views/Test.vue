@@ -2,7 +2,7 @@
   <div class="test">
     <div v-if="dataList.length>0" >
     <div class="title">
-      平均值: {{average}}
+      平均值1111: {{average}}
     </div>
     <div class="list" v-for="item in dataList" :key="item.id">
       <div class="item">ID： <span>{{item.id}}</span></div>
