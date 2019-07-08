@@ -1,0 +1,78 @@
+<template>
+  <div class="test">
+    <div>平均值: {{average}}</div>
+    <ul class="list" v-for="(item,index) in dataList" :key="index">
+      <li>{{item.id}}</li>
+      <li>{{item.data}}</li>
+      <li>{{item.time}}</li>
+    </ul>
+
+    <button @click="update">加载更多</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "test",
+  data() {
+    return {};
+  },
+  created() {
+    this.$store.dispatch("getDataCall");
+  },
+  computed: {
+    dataList() {
+      return this.$store.state.dataList;
+    },
+    average() {
+      return this.$store.getters.getAverage;
+    }
+  },
+  methods: {
+    update() {
+      this.$store.commit("getDataList");
+    }
+  }
+};
+</script>
+
+<style scoped lang="less">
+.test {
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-items:center; 
+    border:0;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    li{
+      list-style-type: none;
+      width: 50%;
+      padding: 6px 0;
+      border: 1px solid #f80;
+      margin-top: -1px;
+      margin-right: -1px;
+      box-sizing: border-box;
+    }
+    li:nth-child(3){
+      width: 100%
+    }
+    li:hover{
+      background-color: #f80;
+      color: #ffffff;
+    }
+  }
+  button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #f80;
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    width: 100%;
+  }
+}
+</style>
+
